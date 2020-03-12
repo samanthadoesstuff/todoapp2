@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    background-color: rgb(255, 250, 250);
+    font-family: Georgia, serif;    
+    font-size: 18px;
+    width: 70%; 
+    margin: auto;
+}
+
+h1 {
+    font-family: 'League Script', serif;
+    font-size: 80px;
+    color: #3A4D13
+}
+
+/* how the to-do list items are displayed */
+ul {
+    list-style-type: none;
+}
+
+/* buttons */
+button {
+    background-color: #3A4D13;
+    color: rgb(255, 250, 250);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.todoTextFields {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10%;
+     
+}
+
+#changeTodoPositionInput, #toggleCompletedPositionInput {
+    width: 30px;
+}
+
+/* instructions */
+.instructions {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 5%;
+}
