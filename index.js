@@ -1,8 +1,8 @@
 // Import stylesheets
 import './style.css';
 
-// Write Javascript code!
-const appDiv = document.getElementById('app');
+var firestore = firebase.firestore();
+
 var todoList = {
   todos: [],
   addTodo: function(todoText){
@@ -13,7 +13,7 @@ var todoList = {
   },
   changeTodo: function(position, todoText) {
     this.todos[position].todoText = todoText;
-  },
+  }, 
   deleteTodo: function(position) {
     this.todos.splice(position, 1);
   },
@@ -115,15 +115,4 @@ var handlers = {
 
 view.setUpEventListeners();
 
-// Your web app's Firebase configuration
-var firebaseConfig = {
-  apiKey: "AIzaSyBZ8_MT132IRjRMvbc9kKcm9LooY9E3te8",
-  authDomain: "todoapp-b5749.firebaseapp.com",
-  databaseURL: "https://todoapp-b5749.firebaseio.com",
-  projectId: "todoapp-b5749",
-  storageBucket: "todoapp-b5749.appspot.com",
-  messagingSenderId: "97021481272",
-  appId: "1:97021481272:web:dc7fa1eee49d69f56171cd"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
