@@ -6,10 +6,16 @@ var firestore = firebase.firestore();
 var todoList = {
   todos: [],
   addTodo: function(todoText){
-    this.todos.push({
+    firestore.collection("todoList").doc("todo").set({
+    // this.todos.push({
       todoText: todoText,
       completed: false
-    });
+    // });
+    }).then(function(){
+      view.displayTodos();
+    }).catch(function(error){
+      console.log("Error: " + error);
+    })
   },
   changeTodo: function(position, todoText) {
     this.todos[position].todoText = todoText;
@@ -42,13 +48,20 @@ var todoList = {
   }
 };
 
+document.getElementById("addTodoButton").addEventListener("click", function(event) {
+  event.preventDefault();
+  var addTodoTextInput = document.getElementById('addTodoTextInput');
+  todoList.addTodo(addTodoTextInput.value);
+  addTodoTextInput.value = '';
+  view.displayTodos();
+})
 var handlers = {
-  addTodo: function() {
-    var addTodoTextInput = document.getElementById('addTodoTextInput');
-    todoList.addTodo(addTodoTextInput.value);
-    addTodoTextInput.value = '';
-    view.displayTodos();
-  },
+  // addTodo: function() {
+  //   var addTodoTextInput = document.getElementById('addTodoTextInput');
+  //   todoList.addTodo(addTodoTextInput.value);
+  //   addTodoTextInput.value = '';
+  //   view.displayTodos();
+  // },
   changeTodo: function() {
     var changeTodoPositionInput = document.getElementById('changeTodoPositionInput');
     var changeTodoTextInput = document.getElementById('changeTodoTextInput');
